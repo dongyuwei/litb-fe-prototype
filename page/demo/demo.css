@@ -1,0 +1,9 @@
+@import url("../../bootstarp/css/bootstrap.min.css");
+@import url("../../bootstarp/css/bootstrap-responsive.min.css");
+
+#modal-header{
+	border-bottom:0;
+}
+#dialog-footer{
+	text-align: left;
+}
