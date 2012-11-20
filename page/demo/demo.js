@@ -7,12 +7,10 @@ function $import(src) {
 $import('../../bootstarp/js/bootstrap.min.js');
 
 $(function(){
-	console.log('document ready!');
 	$('#showDialog').click(function(){
 		$('#loginDialog').modal({
 			keyboard:true,
 			backdrop:true
 		});
 	});
-	
 });

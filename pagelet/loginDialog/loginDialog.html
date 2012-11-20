@@ -1,0 +1,36 @@
+<div id='loginDialog' class="modal hide fade">
+    <div class="modal-header" id='modal-header'>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+            x
+        </button>
+    </div>
+    <div class="modal-body">
+        <div class="tabbable">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="#tab1" data-toggle="tab">Sign In</a>
+                </li>
+                <li>
+                    <a href="#tab2" data-toggle="tab">Register</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab1">
+                    {{> pagelet/loginForm/loginForm }}
+                </div>
+                <div class="tab-pane" id="tab2">
+                    <p>
+                        Howdy, I'm in Section 2.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="dialog-footer" class="modal-footer">
+        <a href="#" class="btn btn-danger" data-dismiss="modal">Sign In</a>
+        <span id="forgotPwd">
+            <a target="_blank" href="http://www.lightinthebox.com/index.php?main_page=password_forgotten"
+            title="Forgot your password?">Forgot your password?</a>
+        </span>
+    </div>
+</div>
