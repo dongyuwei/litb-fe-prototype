@@ -32,18 +32,7 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab1">
-                            <form>
-                                <fieldset>
-                                    <label>
-                                        Email Address:
-                                    </label>
-                                    <input type="text" >
-                                    <label>
-                                        Password:
-                                    </label>
-                                    <input type="text">
-                                </fieldset>
-                            </form>
+                           {{> pagelet/loginForm/loginForm }}
                         </div>
                         <div class="tab-pane" id="tab2">
                             <p>
@@ -55,15 +44,13 @@
             </div>
             <div id="dialog-footer" class="modal-footer">
                 <a href="#" class="btn btn-danger" data-dismiss="modal">Sign In</a>
-                <a href="#" >Forgot your password?</a>
+                <span id="forgotPwd">
+                    <a target="_blank" href="http://www.lightinthebox.com/index.php?main_page=password_forgotten"
+                    title="Forgot your password?">Forgot your password?</a>
+                </span>
             </div>
         </div>
-        <script src="../../base/jquery.1.8.1.js">
-                                                
-        </script>
-        <script src="demo.js">
-                                                
-        </script>
+        <script src="../../base/jquery.1.8.1.js"></script>
+        <script src="demo.js"></script>
     </body>
-
 </html>
