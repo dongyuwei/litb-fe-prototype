@@ -1,0 +1,88 @@
+.w-prSocial li {
+    margin: 8px 10px 0 0;
+    float: left;
+    color: #DDD;
+    list-style: none;
+}
+
+.w-prSocial {
+    border-bottom: 1px dashed #DDD;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.w-mini-prSocial {
+    height: 55px;
+}
+
+.w-bp-a, .w-bp, .w-b, .w-p, .widget, .clearfix, .section {
+    clear: both;
+    zoom: 1;
+    margin-bottom: 10px;
+}
+
+
+.w-mini-prSocial #socialShare {
+top: 25px;
+right: auto;
+left: 0;
+}
+#socialShare {
+margin: 8px 0 0 -3px;
+position: absolute;
+}
+#socialShare a.iconFacebook {
+background-position: -120px -50px;
+}
+#socialShare a, #socialShare em, #socialShare strong {
+display: block;
+width: 20px;
+height: 20px;
+float: left;
+margin: 0 3px;
+}
+#socialShare a, #socialShare strong, .w-discountCountDown span, .discountCountDown_left, .discountCountDown_right, .flagMore, .texttip em.arrow, .icon100, .iconQuestion, .reviewRight .useful, .reviewRight .usefulDown, #CustomerQA .useful, #CustomerQA .usefulDown, .addIcon2, .saleIcon2, .w-reviews .verfied strong, .w-footer-selector {
+background-image: url(../../img/sprite-new.png);
+background-repeat: no-repeat;
+}
+
+#socialShare a.iconPinterest {
+background-position: -145px -50px;
+}
+#socialShare a.iconTwitter {
+background-position: -170px -50px;
+}
+
+.googleplus {
+position: relative;
+float: left;
+width: 20px;
+height: 20px;
+overflow: hidden;
+margin: 0 3px;
+}
+
+#socialShare a.iconGoogle, #socialShare strong.iconGoogle {
+background-position: -195px -50px;
+}
+
+#divAddThis {
+float: left;
+}
+#socialShare a, #socialShare em, #socialShare strong {
+display: block;
+width: 20px;
+height: 20px;
+float: left;
+margin: 0 3px;
+}
+#socialShare a, #socialShare strong, .w-discountCountDown span, .discountCountDown_left, .discountCountDown_right, .flagMore, .texttip em.arrow, .icon100, .iconQuestion, .reviewRight .useful, .reviewRight .usefulDown, #CustomerQA .useful, #CustomerQA .usefulDown, .addIcon2, .saleIcon2, .w-reviews .verfied strong, .w-footer-selector {
+background-image: url(http://cloud7.lbox.me/resource_86350/dev_v2/themes/default/images/sprite-new.png);
+background-repeat: no-repeat;
+}
+#socialShare a.iconEmail {
+background-position: -220px -50px;
+}
+.iconEmail img {
+visibility: hidden;
+}
