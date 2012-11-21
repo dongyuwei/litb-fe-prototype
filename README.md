@@ -5,7 +5,7 @@
     重载 mustache loadPartial方法就可以实现自动加载Partial HTML 对应的JS和CSS等资源，https://github.com/bobthecow/mustache.php/blob/master/src/Mustache/Engine.php#L440
  3. page js css只引入自身需要的js模块，不再需要手动引用pagetlet和widget对应的js和css模块。特殊模块依然可以手动引入。
  4. 后端允许垮域ajax请求以方便测试。
- 5. transport/get || post api 统一管理起来。
+ 5. interface get or post api 统一管理起来。
  6. 开发测试期，js，css直接配置cdn host。
 
 todo:
