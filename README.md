@@ -10,6 +10,9 @@
  7. js以require or $import管理依赖；css以@import 管理依赖。
  8. js组件以jQuery插件方式组织代码，业务代码以task方式组织代码，dom ready时依次执行。
  9. css以bootstrap模块化为参考标准，namespace统一管理。
+ 10. html以Mustache模板来组织，每个页面包含一到多个pagelet，每个pagelet包含一到多个widget。widget是业务无关组件。pagelet是按照相对独立的html视图区块来划分。
+ 11. i18n目录用于多国语言包，根据页面配置动态加载。
+ 12. img目录存放所有图片。尽量采用无图化设计。
 
 todo:
  1. dev tools for extracting,merging,compressing js and css.
