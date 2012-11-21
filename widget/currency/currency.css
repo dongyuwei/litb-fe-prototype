@@ -1,0 +1,8 @@
+@import url("../../bootstarp/css/bootstrap.min.css");
+@import url("../../bootstarp/css/bootstrap-responsive.min.css");
+
+.libt-currency{
+	min-width: 50px;
+	position:relative;
+	left: -20px;
+}

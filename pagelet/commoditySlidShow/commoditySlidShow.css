@@ -1,0 +1,13 @@
+#thumbnailsUp,#thumbnailsDown {
+    text-align: center;
+}
+
+#w-prodthumbnails {
+    float: left;
+    width: 74px;
+    margin: 0 0 0 -2px;
+}
+
+.widget{
+	clear:both;
+}

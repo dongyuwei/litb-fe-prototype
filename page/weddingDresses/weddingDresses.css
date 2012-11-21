@@ -1,0 +1,9 @@
+@import url("../../bootstarp/css/bootstrap.min.css");
+@import url("../../bootstarp/css/bootstrap-responsive.min.css");
+
+@import url("../../pagelet/commoditySlidShow/commoditySlidShow.css");
+@import url("../../pagelet/commodityItem/commodityItem.css");
+
+.demo{
+	margin:10px;
+}
