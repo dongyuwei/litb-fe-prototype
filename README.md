@@ -7,6 +7,9 @@
  4. 后端允许垮域ajax请求以方便测试。
  5. interface get or post api 统一管理起来。
  6. 开发测试期，js，css直接配置cdn host。
+ 7. js以require or $import管理依赖；css以@import 管理依赖。
+ 8. js组件以jQuery插件方式组织代码，业务代码以task方式组织代码，dom ready时依次执行。
+ 9. css以bootstrap模块化为参考标准，namespace统一管理。
 
 todo:
  1. dev tools for extracting,merging,compressing js and css.
