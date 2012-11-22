@@ -18,3 +18,8 @@ todo:
  1. dev tools for extracting,merging,compressing js and css.
  2. how to publish template to backend?
  3. howto publish frontend resources?
+ 
+问题：
+ 1. html(page,pagelet,widget模板)是否分离为独立版本控制的项目？ 
+ 2. 模板传统上由php工程师制作，新开发模式下前端fe和phper如何分工合作？
+ 3. litb，mini，mobile及将来新网站项目如何划分项目及目录结构？如何共享代码且避免文件膨胀？
