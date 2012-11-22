@@ -11,7 +11,7 @@
  8. js组件以jQuery插件方式组织代码，业务代码以task方式组织代码，dom ready时依次执行。
  9. css以bootstrap模块化为参考标准，namespace统一管理。
  10. html以Mustache模板来组织，每个页面page包含一到多个pagelet，每个pagelet包含一到多个widget。widget是业务无关组件。pagelet是按照相对独立的html视图区块来划分,具有一定可复用性。
- 11. i18n目录用于多国语言包，根据页面配置动态加载。
+ 11. i18n目录用于多国语言包，根据页面配置动态加载。国际化处理尽量在后端处理。
  12. img目录存放所有图片。尽量采用无图化设计。img按照功能划分目录。
 
 todo:
