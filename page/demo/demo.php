@@ -4,10 +4,7 @@ Mustache_Autoloader::register();
 
 $mustache = new Mustache_Engine(array(
 	'cache' => '/tmp/mustache/cache',
-    'helpers' => array('i18n' => function($text) {
-        echo $text;
-    }),
-    'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__),array(
+    'loader' => new Mustache_Loader_FilesystemLoader(realpath(dirname(__FILE__). '/../../'),array(
     	'extension' => '.html',
      )),
     'partials_loader' => new Mustache_Loader_FilesystemLoader(realpath(dirname(__FILE__).'/../../'),array(
@@ -15,7 +12,7 @@ $mustache = new Mustache_Engine(array(
      )),
 ));
 
-$tpl = $mustache->loadTemplate('demo');
+$tpl = $mustache->loadTemplate('page/demo/demo');
 echo $tpl->render();
 
 //start-------------------------i18n demo-------------------------------------------------------

@@ -13,6 +13,7 @@
  10. html以Mustache模板来组织，每个页面page包含一到多个pagelet，每个pagelet包含一到多个widget。widget是业务无关组件。pagelet是按照相对独立的html视图区块来划分,具有一定可复用性。
  11. i18n目录用于多国语言包，根据页面配置动态加载。国际化处理尽量在后端处理。
  12. img目录存放所有图片。尽量采用无图化设计。img按照功能划分目录。
+ 13. 每个page，pagelet，widget目录下都有一个相同前缀的js，css，html（mustache模板），php（demo文件）。其中pagelet和widget的html模板文件不能引用对应的js和css，php测试文件可以引用它们，附加在头尾部分。
 
 todo:
  1. dev tools for extracting,merging,compressing js and css.
@@ -23,3 +24,4 @@ todo:
  1. html(page,pagelet,widget模板)是否分离为独立版本控制的项目？ 
  2. 模板传统上由php工程师制作，新开发模式下前端fe和phper如何分工合作？
  3. litb，mini，mobile及将来新网站项目如何划分项目及目录结构？如何共享代码且避免文件膨胀？
+ 4. test文件是否独立出来？
