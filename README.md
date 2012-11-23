@@ -24,19 +24,4 @@ todo:
  2. 模板传统上由php工程师制作，新开发模式下前端fe和phper如何分工合作？
  3. litb，mini，mobile及将来新网站项目如何划分项目及目录结构？如何共享代码且避免文件膨胀？
 
-.
-├── build
-│   └── build.node.js
-├── README.md
-├── src
-│   ├── base
-│   ├── bootstarp
-│   ├── img
-│   ├── Mustache
-│   ├── page
-│   ├── pagelet
-│   └── widget
-└── test
-    └── README.md
 
-10 directories, 3 files
