@@ -6,22 +6,23 @@ if(typeof require === 'undefined'){
     }
 }
 
-
-
 var litb = window.litb || {};
 (function(){
     var Task = function(){
         this.taskList = [];
     };
     Task.prototype = {
-        add: function(job){
-            this.taskList.push(job);
+        add: function(task){
+            this.taskList.push(task);
         },
-        delete: function(){
-            
+        remove: function(task){
+            this.taskList.splice($.inArray(task,this.taskList),1);
         },
         run: function(){
-            
+            $.each(this.taskList,function(i,task){
+                task();
+            });
         }
     };
+    litb.task = new Task();
 })();
