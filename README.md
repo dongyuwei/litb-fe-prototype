@@ -50,6 +50,7 @@
 3. 发布debug和release版。debug版只合并，不压缩混淆。release版合并且压缩代码。
 4. 测试通过后通过提交到svn tags中，发布到cdn。批量发布 or 增量发布 ？
 5. 回滚：大版本回滚使用tag版本号；单独回滚或者上线是使用md5小版本号。
+6. md5 hash mapping.json
 
 
 
