@@ -40,7 +40,7 @@ app.get('/template*', function(req, res) {
 	var templateName = req.params[0];
 	
 	var file = path.join(root,templateName);
-	if(!fs.existsSync(file)){
+	if(!fs.statSync(file).isFile()){
 		res.end(file + ' does not exists! \n <a href="/">return</a>');
 	}else{
 		var dataFile = file.replace('.html','.json'),data = {};
@@ -55,6 +55,12 @@ app.get('/template*', function(req, res) {
 		data['cdn_base_url'] = '';
 		var script = "<script>" + load() + "</script>";
 		res.write(script);
+		if(req.url.match(/\/pagelet\/|\/widget\//)){
+			res.write('<link href="SRC" rel="stylesheet">'.replace('SRC',templateName.replace('.html','.css')));
+			res.write('<script src="/base/jquery.1.8.1.js"></script>');
+			res.write('<script src="SRC"></script>'.replace('SRC',templateName.replace('.html','.js')));
+		}
+
 		mu.root = root;
 		var stream = mu.compileAndRender(file, data);
 		util.pump(stream, res);
