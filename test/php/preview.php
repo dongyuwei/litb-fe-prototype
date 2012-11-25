@@ -14,7 +14,7 @@
 
     function render($template,$cdn_base_url){
         $loader = new Mustache_Loader_FilesystemLoader(realpath(dirname(__FILE__). '/../../src'),array(
-                'extension' => '.html',
+                'extension' => '',
         ));
         $mustache = new Mustache_Engine(array(
             'cache' => '/tmp/mustache/cache',
@@ -29,7 +29,7 @@
 
     $base = realpath(dirname(__FILE__). '/../../src');
     if(empty($_GET['template'])){
-        echo '<div  class="container-fluid">you can preview Mustache template, such as: <br>'. 
+        echo '<div >you can preview Mustache template, such as: <br>'. 
         '<a href="?template=page/demo/demo">page/demo/demo</a> or '.
         '<a href="?template=page/weddingDresses/weddingDresses">page/weddingDresses/weddingDresses</a></div>';
     }else{
