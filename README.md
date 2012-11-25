@@ -41,7 +41,10 @@
 8. **目录结构规划** 参见本项目目录结构。
 
 ##开发流程##
-1. **开发,自测**：在线预览测试。
+1. **开发,自测**：在线预览mustache模板（包括page，pagelet，widget）。
+	1. 执行 `node test/nodejs/preview.js` 
+	2. 访问 http://127.0.0.1:9999/template/page/weddingDresses/weddingDresses.html 即可预览 `page/weddingDresses/weddingDresses.html` 这个mustache模板；
+	3. 模板数据默认从同名的 `page/weddingDresses/weddingDresses.json` 中读取。
 2. **联调**：测试机检出代码，build，使用debug版静态资源测试。测试通过后，使用release版。为复用测试机，可为静态资源配置虚拟主机，按需修改对静态资源的引用。
 
 ##发布流程##
