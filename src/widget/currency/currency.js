@@ -1,4 +1,4 @@
-require('bootstarp/js/bootstrap.min.js');
+require('bootstarp/js/bootstrap.js');
 
 $(function(){
 	var flag = false, timer;

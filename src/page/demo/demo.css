@@ -1,5 +1,5 @@
-@import url("../../bootstarp/css/bootstrap.min.css");
-@import url("../../bootstarp/css/bootstrap-responsive.min.css");
+@import url("../../bootstarp/css/bootstrap.css");
+@import url("../../bootstarp/css/bootstrap-responsive.css");
 
 #modal-header{
 	border-bottom:0;

@@ -1,2 +1,2 @@
-require('bootstarp/js/bootstrap.min.js');
+require('bootstarp/js/bootstrap.js');
 require('pagelet/commodityItem/commodityItem.js');
