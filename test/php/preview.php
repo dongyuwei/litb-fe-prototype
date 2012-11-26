@@ -30,11 +30,11 @@
     $base = realpath(dirname(__FILE__). '/../../src');
     if(empty($_GET['template'])){
         echo '<div >you can preview Mustache template, such as: <br>'. 
-        '<a href="?template=page/demo/demo">page/demo/demo</a> or '.
-        '<a href="?template=page/weddingDresses/weddingDresses">page/weddingDresses/weddingDresses</a></div>';
+        '<a href="?template=page/demo/demo.html">page/demo/demo.html</a> or '.
+        '<a href="?template=page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></div>';
     }else{
         $template = $_GET['template'];
-        $file = $base. '/'. $template . '.html';
+        $file = $base. '/'. $template;
         if (!file_exists($file)) {
             echo '<span style="color:red;">Error: '.$file. ' does not exists!</span>';
             exit(1);
