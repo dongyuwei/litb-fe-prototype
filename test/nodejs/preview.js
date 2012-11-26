@@ -17,9 +17,14 @@ var root = path.resolve(__dirname,'..','..','src');
 
 function load(){
     function require(src) {
-        var script = document.createElement('script');
-        script.src = '/' + src;
-        document.body && document.body.appendChild(script);
+    	window['_jsLibs_'] = window['_jsLibs_'] || {};
+		if(window['_jsLibs_'][src] !== 1){
+		    window['_jsLibs_'][src] = 1;
+
+		    var script = document.createElement('script');
+	        script.src = '/' + src;
+	        document.body && document.body.appendChild(script);
+		}
     }
     return require.toString();
 }
@@ -41,7 +46,7 @@ app.get('/template*', function(req, res) {
 	var templateName = req.params[0];
 	
 	var file = path.join(root,templateName);
-	if(!fs.statSync(file).isFile()){
+	if(!fs.existsSync(file) || !fs.statSync(file).isFile()){
 		res.end(file + ' does not exists! \n <a href="/">return</a>');
 	}else{
 		var dataFile = file.replace('.html','.json'),data = {};

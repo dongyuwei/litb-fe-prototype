@@ -1,9 +1,14 @@
 <script>
     if(typeof require === 'undefined'){
         function require(src) {
-            var script = document.createElement('script');
-            script.src = location.href.split('?')[0].replace('preview','jsLoader') + '?js=' + src;
-            document.body && document.body.appendChild(script);
+            window['_jsLibs_'] = window['_jsLibs_'] || {};
+            if(window['_jsLibs_'][src] !== 1){
+                window['_jsLibs_'][src] = 1;
+
+                var script = document.createElement('script');
+                script.src = location.href.split('?')[0].replace('preview','jsLoader') + '?js=' + src;
+                document.body && document.body.appendChild(script);
+            }
         }
     }
 </script>
