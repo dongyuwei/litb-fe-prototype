@@ -9,7 +9,7 @@ process.on('uncaughtException', function(err) {
 	console.error('Caught exception: ', err);
 });
 
-var app = express.createServer();
+var app = express();
 app.use(express.bodyParser());
 app.use(app.router);
 
@@ -28,9 +28,10 @@ app.get('/', function(req, res) {
 	res.writeHead(200, {
 		'Content-Type': 'text/html;charset=utf-8' 
 	});
-	res.end('<div>you can preview Mustache template, such as: <br>'+
-        '<a href="/template/page/demo/demo.html">page/demo/demo.html</a> or '+
-        '<a href="/template/page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></div>');
+	res.end('<ul>you can preview Mustache template, such as: '+
+        '<li><a href="/template/page/demo/demo.html">page/demo/demo.html</a> </li> '+
+        '<li><a href="/template/page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></li>'+
+        '<li><a href="/template/widget/currency/currency.html">widget/currency/currency.html</a></li></ul>');
 });
 
 app.get('/template*', function(req, res) {
@@ -70,5 +71,6 @@ app.get('/template*', function(req, res) {
 
 app.use(express['static'](root));
 app.use(express.directory(root));
-	
+
+console.log('please visit http://127.0.0.1:9999/');	
 app.listen(9999);
