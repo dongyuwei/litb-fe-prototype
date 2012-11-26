@@ -17,12 +17,12 @@
 ##设计规划##
 1. **JS模块化**：
  1. 组件使用jQuery（or zepto）插件方式来组织代码；
-	2. 统一的namespace管理；
+	2. 统一的namespace管理，尽量不污染全局空间；
 	3. 使用require('a/b/c.js');方式引用依赖模块；
 	4. 使用（jQuery）自定义事件在组件之间交换信息。
 2. **CSS模块化**：
 	1. css使用@import url('a/b/c.css');方式引用依赖。
-	2. 统一的namespace管理
+	2. 统一的namespace管理。
 	3. 最大程度上集成，复用bootstrap这个css框架。并且在css模块化规划上借鉴其设计。
 3. **HTML模块化**：采用无逻辑模板引擎Mustache.php来组装html，隔离标签和代码逻辑。
 	1. 前端提供模板，后端提供数据和数据接口。
@@ -49,11 +49,11 @@
 
 ##发布流程##
 1. 静态资源发布上线前合并，压缩成单个文件。Build目录下提供自动构建工具。
-2. 发布时计算资源md5值，替换模板中对该资源的引用，使用该值控制资源缓存。形如src=http://cloud.lbox.me/tag-123/fe/test.js?v=md5-hash
+2. 发布时计算资源md5值，替换模板中对该资源的引用，使用该值控制资源缓存。形如src=http://cloud.lbox.me/ria/js/test.js?v=md5-hash
 3. 发布debug和release版。debug版只合并，不压缩混淆。release版合并且压缩代码。
-4. 测试通过后通过提交到svn tags中，发布到cdn。批量发布 or 增量发布 ？
-5. 回滚：大版本回滚使用tag版本号；单独回滚或者上线是使用md5小版本号。
-6. md5 hash mapping.json
+4. 测试通过后通过提交到svn tags中，发布到cdn。采用批量发布（暂不进行增量发布）方式。
+5. build时产生静态资源（js，css，img）对应的md5 hash映射文件： mapping.json。后端引用时需要从该映射文件中取对应的资源版本号。
+6. 前端代码上线或者回滚后，提供更新后的mapping.json映射给后端，以更新资源引用版本号，从而去掉旧版本号的资源缓存。
 
 
 
