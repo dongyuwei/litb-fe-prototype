@@ -71,7 +71,7 @@
 2. 模板文件和后端（php）代码一起上线。注意：模板文件与前端代码使用同一svn仓库；后端svn仓库不再重复存储模板文件。
 
 
-
+#[visit the prototype demo](http://session.im:9999/)#
 
 
 
