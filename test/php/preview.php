@@ -17,7 +17,7 @@
     require dirname(__FILE__).'/Mustache/Autoloader.php';
     Mustache_Autoloader::register();
 
-    function render($template,$cdn_base_url){
+    function render($template,$data){
         $loader = new Mustache_Loader_FilesystemLoader(realpath(dirname(__FILE__). '/../../src'),array(
                 'extension' => '',
         ));
@@ -28,8 +28,8 @@
         ));
 
         $tpl = $mustache->loadTemplate($template);
-
-        return $tpl->render(array('cdn_base_url' => $cdn_base_url));
+        echo $template;
+        return $tpl->render($data);
     }
 
     $base = realpath(dirname(__FILE__). '/../../src');
@@ -39,11 +39,18 @@
         '<a href="?template=page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></div>';
     }else{
         $template = $_GET['template'];
+        $data  = array();
         $file = $base. '/'. $template;
         if (!file_exists($file)) {
             echo '<span style="color:red;">Error: '.$file. ' does not exists!</span>';
             exit(1);
+        }else{
+            $json = str_replace('.html',".json",$file);
+            if(file_exists($json)){
+                $data = json_decode(file_get_contents($json),true);
+            }
         }
-        echo render($template,'http://127.0.0.1/litb-fe-prototype/src');
+        $data['cdn_base_url'] = 'http://127.0.0.1/litb-fe-prototype/src';
+        echo render($template,$data);
     };
 ?>
