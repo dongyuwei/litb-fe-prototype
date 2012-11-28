@@ -28,7 +28,6 @@
         ));
 
         $tpl = $mustache->loadTemplate($template);
-        echo $template;
         return $tpl->render($data);
     }
 
