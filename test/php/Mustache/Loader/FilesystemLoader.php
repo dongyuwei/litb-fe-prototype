@@ -56,7 +56,7 @@ class Mustache_Loader_FilesystemLoader implements Mustache_Loader
         }
 
         if (isset($options['extension'])) {
-            $this->extension = ltrim($options['extension'], '.');
+            $this->extension = '.' . ltrim($options['extension'], '.');
         }
     }
 

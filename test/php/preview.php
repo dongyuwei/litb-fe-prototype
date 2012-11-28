@@ -19,7 +19,7 @@
 
     function render($template,$data){
         $loader = new Mustache_Loader_FilesystemLoader(realpath(dirname(__FILE__). '/../../src'),array(
-                'extension' => '',
+                'extension' => 'html',
         ));
         $mustache = new Mustache_Engine(array(
             'cache' => '/tmp/mustache/cache',
