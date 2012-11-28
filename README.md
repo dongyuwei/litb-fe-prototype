@@ -48,10 +48,16 @@
 	
 ##开发流程##
 1. **开发&&自测**：在线预览mustache模板（包括page，pagelet，widget）。
-	1. 工具提供自动化预览服务，如：
-	1. 执行 `node test/nodejs/preview.js` 
-	2. 访问 http://127.0.0.1:9999/template/page/weddingDresses/weddingDresses.html 即可预览 `page/weddingDresses/weddingDresses.html` 这个mustache模板；
-	3. 模板数据默认从同名的 `page/weddingDresses/weddingDresses.json` json文件中读取。
+	1. nodejs辅助预览工具：
+		1. 工具提供自动化预览服务，如：
+		1. 执行 `node test/nodejs/preview.js` 
+		2. 访问 http://127.0.0.1:9999/template/page/weddingDresses/weddingDresses.html 即可预览 `page/weddingDresses/weddingDresses.html` 这个mustache模板；
+		3. 模板数据默认从同名的 `page/weddingDresses/weddingDresses.json` json文件中读取。
+		4. 计划后期增加在线编辑（模板及模板测试数据，js，css）即时预览功能。
+	2. php辅助预览工具：
+		1. http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/demo/demo.html
+		2. or http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/weddingDresses/weddingDresses.html
+		3. 模板数据默认从同名的json文件中读取
 2. **前后端联调测试**：
 	1. 后端配置前端资源的host，映射到前端开发机器(内网可访问)上，如 `192.168.61.7 cloud.lbox.me`
 	2. 前端提供的测试环境可以按需合并后端引用的每个个js，css请求。联调阶段不压缩代码，只合并+排除重复资源引用。
