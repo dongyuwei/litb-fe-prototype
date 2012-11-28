@@ -18,11 +18,11 @@
 1. **JS模块化**：
  	1. 组件使用jQuery（or zepto）插件方式来组织代码；
 	2. 统一的namespace管理，尽量不污染全局空间；
-	3. 使用require('a/b/c.js');方式引用依赖模块；上线前由构建工具合并压缩成单个文件；
+	3. 使用`require('a/b/c.js');`方式引用依赖模块；上线前由构建工具合并压缩成单个文件；
 	4. 使用（jQuery）自定义事件在组件之间交换信息。
-	5. 所有js代码都在dom ready后执行。部分特殊代码可能需要在引用处立即运行，需要开发人员在模板特定位置引入（这种情况下需要避免代码重复引用和执行）。
+	5. 所有js代码都在`dom ready`后执行。部分特殊代码可能需要在引用处立即运行，需要开发人员在模板特定位置引入（这种情况下需要避免代码重复引用和执行）。
 2. **CSS模块化**：
-	1. css使用@import url('a/b/c.css');方式引用依赖；上线前由构建工具合并压缩成单个文件；。
+	1. css使用`@import url('a/b/c.css');`方式引用依赖；上线前由构建工具合并压缩成单个文件；。
 	2. 统一的namespace管理。
 	3. 最大程度上集成，复用bootstrap这个css框架。并且在css模块化规划上借鉴其设计。
 3. **HTML模块化**：采用无逻辑模板引擎 [Mustache](http://mustache.github.com/) 来组装html，强制隔离view和代码逻辑。
@@ -30,11 +30,16 @@
 	2. 为避免修改同步，原则上不允许后端开发人员修改前端模板。
 	3. Page：单个页面，引用多个pagelet。
 	4. Pagelet：单个业务逻辑相关模块（较独立的视图区块），引用多个widget。
-	5. widget：业务无关的独立html片段（引用一个js和一个css）。
+	5. widget：业务无关的独立html片段。
 	6. 模板测试数据： 模板同级目录下 同名的.json 文件用于提供测试数据，以在测试期自动预览模板渲染效果。
-	7. js和css引用：page模板中可引用自身对应的一个js和1个css，分别引入依赖的js和css，负责模块组装和模块通信逻辑。pagelet和widget模板文件中不直接引用对应的js和css,在测试期由测试工具引入其依赖的js，css。。
-4. **I18n 国际化**： 前端在html模板上提供国际化标记，根据语言包数据来动态渲染。`{{#i18n}}test{{/i18n}}` 
-5. **theme**： 提供不同皮肤样式。语言和皮肤相关样式可以单独加载，也可以由cdn服务器来合并请求，如`href="a.css&b.css&c.css"`
+	7. js和css引用：
+		1. page模板中可引用自身对应的一个js和1个css，分别引入依赖的js和css，负责模块组装和模块通信逻辑。
+		2. pagelet和widget模板文件中不直接引用对应的js和css,在测试期由测试工具自动引入其依赖的js，css。
+		
+4. **I18n 国际化**： 前端在html模板上提供国际化标记，根据语言包数据来动态渲染。如`{{#i18n}}test{{/i18n}}`，无语言包数据时默认输出英文内容。
+5. **theme**： 提供不同皮肤样式。
+	1. 语言和皮肤相关样式可以单独加载；
+	2. 也可以由cdn服务器来合并请求，如`<link rel="stylesheet" type="text/css" href="http://cloud.lbox.me/a.css&b.css&c.css" />`则自动合并3个css文件，应答给浏览器。
 6. **img**：img目录位于src 根目录，按照功能模块划分目录。图片尽量不涉及国际化内容。
 7. **Svn规划**：
 	1. 前端使用 *独立* svn仓库(svn:svn.tbox.me/litb_ria)。
@@ -49,15 +54,14 @@
 ##开发流程##
 1. **开发&&自测**：在线预览mustache模板（包括page，pagelet，widget）。
 	1. nodejs辅助预览工具：
-		1. 工具提供自动化预览服务，如：
 		1. 执行 `node test/nodejs/preview.js` 
 		2. 访问 http://127.0.0.1:9999/template/page/weddingDresses/weddingDresses.html 即可预览 `page/weddingDresses/weddingDresses.html` 这个mustache模板；
-		3. 模板数据默认从同名的 `page/weddingDresses/weddingDresses.json` json文件中读取。
-		4. 计划后期增加在线编辑（模板及模板测试数据，js，css）即时预览功能。
+		3. 模板数据默认从 *同名的json文件* `page/weddingDresses/weddingDresses.json` 中读取。
+		4. 计划后期增加在线编辑（模板及模板测试数据，js，css）和即时预览功能。
 	2. php辅助预览工具：
 		1. http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/demo/demo.html
 		2. or http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/weddingDresses/weddingDresses.html
-		3. 模板数据默认从同名的json文件中读取
+		3. 模板数据默认从 *同名的json文件* 中读取
 2. **前后端联调测试**：
 	1. 后端配置前端资源的host，映射到前端开发机器(内网可访问)上，如 `192.168.61.7 cloud.lbox.me`
 	2. 前端提供的测试环境可以按需合并后端引用的每个个js，css请求。联调阶段不压缩代码，只合并+排除重复资源引用。
