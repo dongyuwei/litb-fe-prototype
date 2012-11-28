@@ -1,9 +1,1 @@
-@import url("../../bootstarp/css/bootstrap.css");
-@import url("../../bootstarp/css/bootstrap-responsive.css");
-
-#modal-header{
-	border-bottom:0;
-}
-#dialog-footer{
-	text-align: left;
-}
+@import url("../../pagelet/loginDialog/loginDialog.css");
