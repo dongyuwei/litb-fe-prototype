@@ -27,15 +27,23 @@
             'partials_loader' => $loader
         ));
 
+        $mustache->addHelper('i18n', function($text) {
+            $dictionary = array(
+                'hello world!' => '你好，世界!'
+            );
+            return array_key_exists($text, $dictionary) ? $dictionary[$text] : $text;
+        });
+
         $tpl = $mustache->loadTemplate($template);
         return $tpl->render($data);
     }
 
     $base = realpath(dirname(__FILE__). '/../../src');
     if(empty($_GET['template'])){
-        echo '<div >you can preview Mustache template, such as: <br>'. 
-        '<a href="?template=page/demo/demo.html">page/demo/demo.html</a> or '.
-        '<a href="?template=page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></div>';
+        echo '<ul>you can preview Mustache template, such as: '. 
+        '<li><a href="?template=page/demo/demo.html">page/demo/demo.html</a> </li>'.
+        '<li><a href="?template=page/weddingDresses/weddingDresses.html">page/weddingDresses/weddingDresses.html</a></li>'.
+        '</ul>';
     }else{
         $template = $_GET['template'];
         $data  = array();
