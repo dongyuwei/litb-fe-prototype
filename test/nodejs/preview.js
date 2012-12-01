@@ -71,15 +71,12 @@ app.get('/template*', function(req, res) {
             res.write('<script src="SRC"></script>'.replace('SRC', templateName.replace('.html', '.js')));
         }
 
-        var I18N = {
-        	'hello world!' : '你好，世界!'
-        };
         data = merge(data,{
         	'cdn_base_url':'',
             "name": "dongyuwei",
             "i18n": function() {
                 return function(text, render) {
-                    text = I18N[text] || text;
+                    text = (data['I18N'] && data['I18N'][text]) || text;
                     return render(text);
                 }
             }
