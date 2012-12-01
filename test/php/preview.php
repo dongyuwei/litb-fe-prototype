@@ -28,10 +28,7 @@
         ));
 
         $mustache->addHelper('i18n', function($text) {
-            $dictionary = array(
-                'hello world!' => '你好，世界!'
-            );
-            return array_key_exists($text, $dictionary) ? $dictionary[$text] : $text;
+            return array_key_exists($text, $data['I18N']) ? $data['I18N'][$text] : $text;
         });
 
         $tpl = $mustache->loadTemplate($template);
