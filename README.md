@@ -86,5 +86,12 @@
 
 #[visit the prototype demo](http://session.im:9999/)#
 
+##实施步骤##
+1. 现在mobile部分页面实施，可与老代码并存。
+
+##部分规范##
+1. 为兼容php老代码，前端文件及目录均统一使用下划线和小写字母的组合。
+2. theme和language相关js，css单独请求。后期cdn支持动态合并静态资源时可与页面级静态资源合并为一个请求（最终为1个js+1个css）。
+
 
 
