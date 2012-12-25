@@ -87,6 +87,9 @@
 1. 现在mobile部分页面实施，可与老代码并存。使用zepto.js代替jquery.js.
 2. 兰亭主站主导航模块引入mustache模板，使用新开发模式。
 
+##前端辅助工具##
+开发环境，打包工具：https://github.com/dongyuwei/ria-packager
+
 ##部分规范##
 1. 前端文件及目录均统一使用下划线和小写字母的组合。
 2. css名称以a-b-c格式命名
