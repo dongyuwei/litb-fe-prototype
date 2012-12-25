@@ -39,7 +39,7 @@
 4. **I18n 国际化**： 前端在html模板上提供国际化标记，根据语言包数据来动态渲染。如`{{#i18n}}test{{/i18n}}`，无语言包数据时默认输出英文内容。
 5. **theme**： 提供不同皮肤样式。
 	1. 语言和皮肤相关样式可以单独加载；
-	2. 也可以由cdn服务器来合并请求，如`<link rel="stylesheet" type="text/css" href="http://cloud.lbox.me/a.css&b.css&c.css" />`则自动合并3个css文件，应答给浏览器。
+	2. 也可以由cdn服务器来合并请求，如`<link rel="stylesheet" type="text/css" href="http://cloud.lbox.me/mobile/??page/checkout_address_process/checkout_address_process.css?v=dbdd7e7721287c19,theme/blue/skin.css?v=99129a3f2430cb5a" />`则自动合并3个css文件，应答给浏览器。
 6. **img**：img目录位于src 根目录，按照功能模块划分目录。图片尽量不涉及国际化内容。
 7. **Svn规划**：
 	1. 前端使用 *独立* svn仓库(svn:svn.tbox.me/litb_ria)。
@@ -56,15 +56,14 @@
 
 ##开发流程##
 1. **开发&&自测**：在线预览mustache模板（包括page，pagelet，widget）。
-	1. nodejs辅助预览工具：
-		1. 执行 `node test/nodejs/preview.js` 
-		2. 访问 http://127.0.0.1:9999/template/page/weddingDresses/weddingDresses.html 即可预览 `page/weddingDresses/weddingDresses.html` 这个mustache模板；
-		3. 模板数据默认从 *同名的json文件* `page/weddingDresses/weddingDresses.json` 中读取。
-		4. 计划后期增加在线编辑（模板及模板测试数据，js，css）和即时预览功能。
-	2. php辅助预览工具：
-		1. http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/demo/demo.html
-		2. or http://127.0.0.1/litb-fe-prototype/test/php/preview.php?template=page/weddingDresses/weddingDresses.html
-		3. 模板数据默认从 *同名的json文件* 中读取
+	1. 访问 mustache html模板文件 即可预览；
+	2. 模板数据默认从 *同名的.json文件* 中读取。
+	3. 可使用模板文件同级目录下_test/_layout.html包装widget和pagelet。
+	4. 可使用模板文件同级目录下_test/xyz.json来做多模板测试数据。默认数据从模板同名json文件中读取。
+	5. 可在线切换皮肤样式，语言包，模板数据。测试不同效果。
+	6. 模板数据计划可从php那边实时请求，以方便联调开发。
+	7. page，pagelet引用widget模板时，widget模板对应的js和css需要开发者手动引入，以方便打包发布（后续可考虑自动引入）。
+	8. 计划后期增加在线编辑（模板及模板测试数据，js，css）和即时预览功能。
 2. **前后端联调测试**：
 	1. 后端配置前端资源的host，映射到前端开发机器(内网可访问)上，如 `192.168.61.7 cloud.lbox.me`
 	2. 前端提供的测试环境可以按需合并后端引用的每个个js，css请求。联调阶段不压缩代码，只合并+排除重复资源引用。
@@ -78,7 +77,7 @@
 1. 前端代码单独发布到cdn：
 	1. 仿真测试通过的静态资源可直接提交到前端svn tags目录中。
 	2. 构建工具会计算静态资源（js，css）文件内容的md5 hash，生成一个mapping.json 映射文件 (内容形如 ` { "page/demo/demo.css": "3e52e156b50b8080",...}`)。后端引用时需要从该映射文件中取对应的资源版本号,
-	形如`<script src="http://cloud.lbox.me/ria/page/demo/demo.css?v=3e52e156b50b8080"></script>` 。
+	形如`<script src="http://cloud.lbox.me/ria/mobile/demo/demo.css?v=3e52e156b50b8080"></script>` 。
 	3. 前端代码上线或者回滚后，提供最新的 mapping.json 映射文件给后端，以更新资源引用版本号，从而去掉旧版本号的缓存。
 	4. 前端静态资源发布到cdn。
 2. 模板文件也可以单独上线（也可以按照传统模式与后端代码一起上线）。模板单独上线的好处在于：构建工具可以动态更新模板中对js，css等静态资源的引用版本号（以文件内容md5值来控制缓存）。注意：模板文件与前端代码使用同一svn仓库；后端svn仓库不再重复存储模板文件。
