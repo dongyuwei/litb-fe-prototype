@@ -96,6 +96,8 @@
 3. html中id，name等以驼峰格式命名
 4. js注释规范以jsDoc为标准
 5. theme和language相关js，css单独请求。后期cdn支持动态合并静态资源时可与页面级静态资源合并为一个请求（最终为1个js+1个css）。
+6. page名称需要与php共同约定。
+7. 前端使用纯json数据+nodejs的mustache引擎来渲染mustache模板，php端的mustache引擎不可使用Lambdas这一特殊模板语法，目的是彻底避免数据中出现复杂ui逻辑。
 
 
 
