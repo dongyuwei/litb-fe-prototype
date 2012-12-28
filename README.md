@@ -25,6 +25,7 @@
 	1. css使用`@import url('a/b/c.css');`方式引用依赖；上线前由构建工具合并压缩成单个文件；。
 	2. 统一的namespace管理。
 	3. 最大程度上集成，复用bootstrap这个css框架。并且在css模块化规划上借鉴其设计。
+	4. 使用less来开发基础组件。
 3. **HTML模块化**：采用无逻辑模板引擎 [Mustache](http://mustache.github.com/) 来组装html，强制隔离view和代码逻辑。
 	1. 前端提供模板；后端只负责提供数据和数据接口。
 	2. 为避免修改同步，原则上不允许后端开发人员修改前端模板。
@@ -101,6 +102,6 @@
 5. theme和language相关js，css单独请求。后期cdn支持动态合并静态资源时可与页面级静态资源合并为一个请求（最终为1个js+1个css）。
 6. page名称需要与php共同约定。
 7. 前端使用纯json数据+nodejs的mustache引擎来渲染mustache模板，php端的mustache引擎不可使用Lambdas这一特殊模板语法，目的是彻底避免数据中出现复杂ui逻辑。
-
+8. 超长文本显示...,title显示完整文本。
 
 
