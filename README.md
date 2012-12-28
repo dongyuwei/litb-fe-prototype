@@ -37,7 +37,10 @@
 		1. page模板中可引用自身对应的一个js和1个css，分别引入依赖的js和css，负责模块组装和模块通信逻辑。
 		2. pagelet和widget模板文件中不直接引用对应的js和css,在测试期由测试工具自动引入其依赖的js，css。
 		
-4. **I18n 国际化**： 前端在html模板上提供国际化标记，根据语言包数据来动态渲染。如`{{#i18n}}test{{/i18n}}`，无语言包数据时默认输出英文内容。
+4. **I18n 国际化**： 前端在html模板上提供国际化标记，根据语言包数据来动态渲染。
+ 1. 如`{{#i18n}}test{{/i18n}}`，无语言包数据时默认输出英文内容。前端模板只做英语版，其他版本由后台提供国际化语言包。前端可以创建特定testcase来测试某个特定语言。
+ 2. 语言相关的css加载在页面主要css和皮肤css之后。
+ 3. 语言相关的js如果单独加载，需要放在页面主js之前，如form表单的报错信息等。
 5. **theme**： 提供不同皮肤样式。
 	1. 语言和皮肤相关样式可以单独加载；
 	2. 也可以由cdn服务器来合并请求，如`<link rel="stylesheet" type="text/css" href="http://cloud.lbox.me/mobile/??page/checkout_address_process/checkout_address_process.css?v=dbdd7e7721287c19,theme/blue/skin.css?v=99129a3f2430cb5a" />`则自动合并3个css文件，应答给浏览器。
