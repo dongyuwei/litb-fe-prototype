@@ -103,5 +103,6 @@
 6. page名称需要与php共同约定。
 7. 前端使用纯json数据+nodejs的mustache引擎来渲染mustache模板，php端的mustache引擎不可使用Lambdas这一特殊模板语法，目的是彻底避免数据中出现复杂ui逻辑。
 8. 超长文本显示...,title显示完整文本。
+9. less文件中使用`@body-background`，而不使用 `@bodyBackground`这种变量形式。
 
 
