@@ -81,7 +81,11 @@
 11. **ajax接口**：
       1. ajax请求附带上content-type参数，后端根据其值为 **json** 或者 **html** 而返回对应类型的数据。这样一个接口可供多个产品使用，有自定义模板的产品可以只请求json数据。
       2. 所有ajax请求后端接口均允许跨域访问，以方便开发测试---及开发与线上代码ajax接口地址可保持一致，不用为测试而修改。
-
+12. 第三方外链脚本统一管理起来：原则是尽量延迟懒加载，避免阻塞主页面的加载和渲染，特殊情况可提前加载。
+	1. img，script，iframe这3种类型的外链请求。
+	2. head内和footer内加载的；
+	3. document.write 和普通方式加载的；
+	4. dom ready和window onload后加载的。
 ##开发流程##
 1. **开发&&自测**：在线预览mustache模板（包括page，pagelet，widget）。
 	1. 访问 mustache html模板文件 即可预览；
