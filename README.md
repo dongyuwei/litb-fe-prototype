@@ -23,7 +23,8 @@
 	2. 统一的namespace管理，保证不污染全局空间；
 	3. 使用`require('a/b/c.js');`方式引用依赖模块；上线前由构建工具合并压缩成单个文件；
 	4. 所有js代码都在`dom ready`后执行。部分特殊代码可能需要在引用处立即运行，可特殊处理。
-	5. 使用（jQuery） **自定义事件** 在组件之间交换信息。发布的主题以`widget-xxx-topic` 形式，数据统一为单个Object Hash类型变量. `on(bind)`和`trigger`的主体均为全局window,即$(window)。触发事件时只提供一个 Object 类型数据;
+	5. js代码中如果涉及到大段html字符串拼接，要使用mustache.js模板来替换之，保证代码的结构化和可读性。   
+	6. 使用（jQuery） **自定义事件** 在组件之间交换信息。发布的主题以`widget-xxx-topic` 形式，数据统一为单个Object Hash类型变量. `on(bind)`和`trigger`的主体均为全局window,即$(window)。触发事件时只提供一个 Object 类型数据;
 	     1.  **bind**  custom event：
 	     ```
 		$(window).on('widget-custom-event-name', function(event, data) {
@@ -38,7 +39,7 @@
 	     ```
 		$(window).off('widget-custom-event-name',[handler]);
 	     ```
-	6. js代码中如果涉及到大段html字符串拼接，要使用mustache.js模板来替换之，保证代码的结构化和可读性。   
+	
 2. **CSS模块化**：
 	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖(注意要使用 **@import-once** 保证只引入一次)；上线前由构建工具合并压缩成单个文件。
 	2. 统一的namespace管理，每个widget的最外层容器附加`class="widget widget-name"`,内部css均在`.widget-name`选择器内定义组件样式。
