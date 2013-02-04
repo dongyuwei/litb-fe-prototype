@@ -24,7 +24,7 @@
 	3. 使用`require('a/b/c.js');`方式引用依赖模块；上线前由构建工具合并压缩成单个文件；
 	4. 所有js代码都在`dom ready`后执行。部分特殊代码可能需要在引用处立即运行，可特殊处理。
 	5. 使用（jQuery）自定义事件在组件之间交换信息。发布的主题以`widget-xxx-topic` 形式，数据统一为单个Object Hash类型变量. `on(bind)`和`trigger`的主体均为全局window,即$(window)。触发事件时只提供一个 Object 类型数据;
-	     1. bind custom event：$(window).on('widget-custom-event-name',function(event,data){console.log(event,data); });`
+	     1. bind custom event：`$(window).on('widget-custom-event-name',function(event,data){console.log(event,data); });`
 	     2. trigger custom event:`$(window).trigger('widget-custom-event-name',{'a' : 1, 'b' : 'str','list':[1,2,3]});`
 	     3. unbind custom event:`$(window).off('widget-custom-event-name',[handler]);`
 	     
