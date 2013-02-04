@@ -37,9 +37,9 @@
 	     
         
 2. **CSS模块化**：
-	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖；上线前由构建工具合并压缩成单个文件；。
+	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖(注意要使用 **`@import-once** 保证只引入一次)；上线前由构建工具合并压缩成单个文件；。
 	2. 统一的namespace管理，每个widget的最外层容器附加`class="widget widget-name"`,内部css均在`.widget-name`选择器内定义组件样式。
-	3. 最大程度上集成，复用bootstrap这个css框架； **按需引用** 其less组件源码。
+	3. 最大程度上集成，复用bootstrap这个css框架； **按需引用** 其组件.less源码(注意，bootstrap单个组件如button.less均依赖 **variables.less** 和 **mixins.less** 这2个基础文件)。
 3. **HTML模块化**：采用无逻辑模板引擎 [Mustache](http://mustache.github.com/) 来组装html，强制隔离view和代码逻辑。
 	1. 前端提供模板；后端只负责提供数据和数据接口。
 	2. 为避免修改同步，原则上不允许后端开发人员修改前端模板。
