@@ -38,7 +38,7 @@
 	     ```
 		$(window).off('widget-custom-event-name',[handler]);
 	     ```
-	     
+	6. js代码中如果涉及到大段html字符串拼接，要使用mustache.js模板来替换之，保证代码的结构化和可读性。   
 2. **CSS模块化**：
 	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖(注意要使用 **@import-once** 保证只引入一次)；上线前由构建工具合并压缩成单个文件。
 	2. 统一的namespace管理，每个widget的最外层容器附加`class="widget widget-name"`,内部css均在`.widget-name`选择器内定义组件样式。
