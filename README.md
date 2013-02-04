@@ -24,7 +24,7 @@
 	3. 所有js代码都在`dom ready`后执行。部分特殊代码可能需要在引用处立即运行，可特殊处理。
 	4. js代码中如果涉及到大段html字符串拼接，要使用mustache.js模板来替换之，保证代码的结构化和可读性。
 	5. 页面全局配置变量只有一个：`litb`。由后端打印出前端需要的通用信息。
-	6. 使用（jQuery） **自定义事件** 在组件之间交换信息。发布的主题以`widget-xxx-topic` 形式，数据统一为单个Object Hash类型变量. `on(bind)`和`trigger`的主体均为全局window,即$(window)。触发事件时只提供一个 Object 类型数据;
+	6. 使用（jQuery） **自定义事件** 在组件之间交换信息。发布的主题以`widget-xxx-topic` 形式，数据统一为单个Object类型变量. `on(bind)`和`trigger`的主体均为全局window,即$(window)。触发事件时只提供一个 Object 类型数据;
 	     1.  **bind**  custom event：
 	     ```
 		$(window).on('widget-custom-event-name', function(event, data) {
