@@ -33,11 +33,13 @@
 	    ```
             $(window).trigger('widget-custom-event-name',{'a' : 1, 'b' : 'str','list':[1,2,3]});
             ```
-	     3. unbind custom event:`$(window).off('widget-custom-event-name',[handler]);`
+	     3. unbind custom event:
+	     ```
+             $(window).off('widget-custom-event-name',[handler]);
+            ```
 	     
-        
 2. **CSS模块化**：
-	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖(注意要使用 **`@import-once** 保证只引入一次)；上线前由构建工具合并压缩成单个文件；。
+	1. 统一使用less来开发基础组件和业务代码，使用`@import-once 'a/b/c.less';`方式来引用依赖(注意要使用 **@import-once** 保证只引入一次)；上线前由构建工具合并压缩成单个文件；。
 	2. 统一的namespace管理，每个widget的最外层容器附加`class="widget widget-name"`,内部css均在`.widget-name`选择器内定义组件样式。
 	3. 最大程度上集成，复用bootstrap这个css框架； **按需引用** 其组件.less源码(注意，bootstrap单个组件如button.less均依赖 **variables.less** 和 **mixins.less** 这2个基础文件)。
 3. **HTML模块化**：采用无逻辑模板引擎 [Mustache](http://mustache.github.com/) 来组装html，强制隔离view和代码逻辑。
