@@ -50,16 +50,31 @@
 	3. Page：单个页面，引用多个pagelet。
 	4. Pagelet：单个业务逻辑相关模块（较独立的视图区块），引用多个widget。
 	5. widget：业务无关的独立html片段。
-	6. 模板测试数据： 模板同级目录下 同名的.json 文件用于提供测试数据，以在测试期自动预览模板渲染效果。
-	7. 同一widget被多次引用时需要提供不同上下文环境的数据.
-	8. js和css引用：
+	6. 同一widget被多次引用时需要提供不同上下文环境的数据.
+	7. js和css引用：
 		1. page模板中可引用自身对应的一个js和1个css，分别引入依赖的js和css，负责模块组装和模块通信逻辑。
 		2. pagelet和widget模板文件中不直接引用对应的js和css,在测试期由测试工具自动引入其依赖的js，css。
-	9. 每个widget组件容器DOM都要包含一个`class="widget widget-name"` 
-	10. 模块（widget，pagelet）相关的数据要求在模板渲染期间提供，或者使用模板html的自定义属性，如`<div class='widget' data-json='{...}'>`；然后由js脚本来获取。
-	11. **模板测试数据约定**：
-		1. 与html模板文件同名的json文件用于提供模板测试数据。
+	8. 每个widget组件容器DOM都要包含一个`class="widget widget-name"` 
+	9. **模板数据**：
+		1. 与html模板文件同名的json文件用于提供模板测试数据（_test/main.json, 其他_test/*.json 可在线切换，以测试不同模板数据测试效果）。
 		2. 模板同名文件中I18N这个数据项（HashMap）提供测试国际化数据，可测试模板国际化效果。
+		3.  **js脚本需要的数据** : 通过模板html的自定义属性，如`<div class='widget test' data-json='{{{jsonData}}}'>`；
+		然后由js脚本来获取。注意， **jsonData** 在模板json数据中必须是已经经过json编码的 **字符串**.
+                ```
+                {"detail":"hahahh","jsonData":"{\"a\":[1,2,3],\"b\":{\"bb\":22}}"} 
+                ```
+		<br/>mustache模板渲染出来是：<br/>
+		```
+                <div class='widget test' data-json='{"a":[1,2,3],"b":{"bb":22}}'> 
+                ```
+                <br/>而下面就是错误的，mustache渲染出来的data-json无法被js解析利用：<br/>
+                ```
+                {"detail":"hahahh","jsonData":{"a":[1,2,3],"b":{"bb":22}}} 
+                ```
+		<br/>mustache模板渲染出来是<br/>
+		```
+                <div class='widget test' data-json='[object Object]'>
+		```<br/>
 		
 4. **I18n 国际化**： 前端在html模板上提供国际化标记，后端根据语言包数据来动态渲染。
  1. 如`{{#i}}test{{/i}}`，无语言包数据时默认输出英文内容。前端模板只做英语版，其他版本由后台提供国际化语言包。前端可以创建特定testcase来测试某个特定语言。
