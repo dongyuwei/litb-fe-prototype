@@ -58,8 +58,9 @@
 	9. **模板数据**：
 		1. 与html模板文件同名的json文件用于提供模板测试数据（_test/main.json, 其他_test/*.json 可在线切换，以测试不同模板数据测试效果）。
 		2. 模板同名文件中I18N这个数据项（HashMap）提供测试国际化数据，可测试模板国际化效果。
-		3.  **js脚本需要的数据** : 通过模板html的自定义属性，如`<div class='widget test' data-json='{{{jsonData}}}'>`；
-		然后由js脚本来获取。注意， **jsonData** 在模板json数据中必须是已经经过json编码的 **字符串**.
+		3.  **js脚本需要的数据** : 有两种方式来获取。
+			1.  通过ajax请求向服务端按需动态获取
+			2.  附加在主模板json数据中,通过模板html的自定义属性,如`<div class='widget test' data-json='{{{jsonData}}}'>`,然后由js来获取. 注意， **jsonData** 在模板json数据中必须是已经经过json编码的 **字符串**. 如下面的模板数据：</br>
                 ```
                 {"detail":"hahahh","jsonData":"{\"a\":[1,2,3],\"b\":{\"bb\":22}}"} 
                 ```
@@ -67,14 +68,15 @@
 		```
                 <div class='widget test' data-json='{"a":[1,2,3],"b":{"bb":22}}'> 
                 ```
-                <br/>而下面就是错误的，mustache渲染出来的data-json无法被js解析利用：<br/>
+                <hr/>而下面的模板数据经过mustache渲染出来的data-json无法被js解析利用：<br/>
                 ```
                 {"detail":"hahahh","jsonData":{"a":[1,2,3],"b":{"bb":22}}} 
                 ```
-		<br/>mustache模板渲染出来是<br/>
+		<br/>mustache模板渲染出来是:<br/>
 		```
                 <div class='widget test' data-json='[object Object]'>
-		```<br/>
+		```
+
 		
 4. **I18n 国际化**： 前端在html模板上提供国际化标记，后端根据语言包数据来动态渲染。
  1. 如`{{#i}}test{{/i}}`，无语言包数据时默认输出英文内容。前端模板只做英语版，其他版本由后台提供国际化语言包。前端可以创建特定testcase来测试某个特定语言。
