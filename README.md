@@ -103,6 +103,7 @@
 	2. head内和footer内加载的；
 	3. document.write 和普通方式加载的；
 	4. dom ready和window onload后加载的。
+	
 ##开发流程##
 1. **开发&&自测**：在线预览mustache模板（包括page，pagelet，widget）。
 	1. 访问 mustache html模板文件 即可预览；
