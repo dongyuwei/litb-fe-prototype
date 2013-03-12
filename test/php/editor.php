@@ -50,6 +50,12 @@
             var button = $('#render'), form = $('#mustache'), box = $('#html');
             form.submit(function(e){
                 e.preventDefault();
+                try{
+                    JSON.parse($('[name="json"]').val())
+                }catch(e){
+                    box.text("Error when parsing JSON " + e);
+                    return;
+                }
                 button.attr('disabled',true);
                 $.ajax({
                     type        : "POST",

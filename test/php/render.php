@@ -15,8 +15,11 @@
     $base = realpath(dirname(__FILE__). '/../../src');
 
     if($_POST['template'] && $_POST['json']){
-        $template = $_POST['template'];
-        $data = json_decode($_POST['json'],true);
-        echo render($template,$data);
+        try {
+            $data = json_decode($_POST['json'],true);
+            echo render($_POST['template'],$data);
+        } catch (Exception $e) {
+            echo 'Error when render mustache : '.$e->getMessage();
+        }
     }
 ?>
