@@ -12,8 +12,6 @@
         return $mustache->render($template, $data); 
     }
 
-    $base = realpath(dirname(__FILE__). '/../../src');
-
     if($_POST['template'] && $_POST['json']){
         try {
             $data = json_decode($_POST['json'],true);
