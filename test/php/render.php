@@ -11,7 +11,8 @@
 
         return $mustache->render($template, $data); 
     }
-
+    //echo render('{{test}}ttttt{{{test}}}',array('test'=>'<a href="#">aaa</a>'));
+    //die();
     if($_POST['template'] && $_POST['json']){
         try {
             $data = json_decode($_POST['json'],true);
