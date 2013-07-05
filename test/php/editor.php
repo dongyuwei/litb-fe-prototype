@@ -66,7 +66,7 @@
                         button.attr('disabled',false);
                     },
                     success     : function(data){
-                        box.text(data);
+                        box.html(data);
                         Highlight.highlightDocument();
                     },
                     error       : function(){
